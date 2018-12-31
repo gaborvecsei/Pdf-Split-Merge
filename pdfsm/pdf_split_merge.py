@@ -41,14 +41,18 @@ def interpret_config_file(file_path: str, file_encoding: str = None) -> dict:
         pdf_file_path = l[0] + ".pdf"
         page_numbers = interpret_page_numbers(l[1])
 
-        d[pdf_file_path] = page_numbers
+        d[i] = {pdf_file_path: page_numbers}
 
     return d
 
 
 def extract_interesting_pdf_pages(pdf_dict: dict) -> list:
     pages = []
-    for pdf_file_path, page_numbers in pdf_dict.items():
+
+    for pdf_file_number, details_dict in pdf_dict.items():
+        pdf_file_path = list(details_dict.keys())[0]
+        page_numbers = list(details_dict.values())[0]
+
         pdf = PyPDF2.PdfFileReader(pdf_file_path)
         for i in page_numbers:
             p = i - 1
