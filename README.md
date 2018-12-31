@@ -1,6 +1,9 @@
-# Pdf Split & Merge
+# PDFSM - Pdf Split & Merge
 
-Simple tool to split and merge multiple pdf files at once
+Simple tool to split and merge multiple pdf files
+
+> I wanted to quickly select pages from pdf files and merge them into a single document but I did not find any
+usable tool...So I made one in a few minutes :smiley:
 
 ## Install
 

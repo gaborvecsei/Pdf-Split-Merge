@@ -6,10 +6,6 @@ from typing import List
 import PyPDF2
 
 
-def read_pdf_files(file_paths: List[str]) -> List[PyPDF2.PdfFileReader]:
-    return [PyPDF2.PdfFileReader(x) for x in file_paths]
-
-
 def interpret_page_numbers(page_numbers: str) -> List[int]:
     numbers = []
 
@@ -53,7 +49,6 @@ def interpret_config_file(file_path: str, file_encoding: str = None) -> dict:
 def extract_interesting_pdf_pages(pdf_dict: dict) -> list:
     pages = []
     for pdf_file_path, page_numbers in pdf_dict.items():
-        # pdf_file_path = str(Path(pdf_file_path))
         pdf = PyPDF2.PdfFileReader(pdf_file_path)
         for i in page_numbers:
             p = i - 1
